@@ -1,24 +1,38 @@
-import React from 'react';
+import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
+import { NavLink } from "react-router-dom";
 import './NavBar.css';
-import CartWidget from '../CartWidget/CartWidget';
 
-function NavBar() {
+const NavBar = ({ cartCount }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1>eShop</h1>
+        <NavLink to="/" className={({ isActive }) => (isActive ? "active-link" : "")}>
+          <h1>eShop</h1>
+        </NavLink>
       </div>
       <ul className="navbar-links">
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#products">Productos</a></li>
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#contact">Contacto</a></li>
+        <li>
+          <NavLink to="/category/auriculares" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Auriculares
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/parlantes" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Parlantes
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/category/notebooks" className={({ isActive }) => (isActive ? "active-link" : "")}>
+            Notebooks
+          </NavLink>
+        </li>
       </ul>
       <div className="navbar-cart">
-        <CartWidget />
+        <CartWidget cartCount={cartCount} />
       </div>
     </nav>
   );
-}
+};
 
 export default NavBar;

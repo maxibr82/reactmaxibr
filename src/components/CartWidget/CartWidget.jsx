@@ -1,17 +1,13 @@
-import React from 'react';
+import React from "react";
 import './CartWidget.css';
 
-function CartWidget() {
-  const itemCount = 5; // Número hardcodeado
-
+const CartWidget = ({ cartCount }) => {
   return (
-    <div className="cart-widget">
-      <button className="cart-button">
-        🛒
-        <span className="cart-count">{itemCount}</span>
-      </button>
+    <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+      <i className="fas fa-shopping-cart"></i>
+      <span className="cart-count">{cartCount}</span>
     </div>
   );
-}
+};
 
 export default CartWidget;
