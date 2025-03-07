@@ -1,0 +1,44 @@
+.form-checkout {
+    margin: auto;
+    max-width: 600px; /* Ajustar el ancho máximo del formulario */
+  }
+  
+  .form-checkout label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 1.2rem; /* Ajustar el tamaño de la fuente */
+    text-align: left; /* Cambiar la alineación del texto a la izquierda */
+    color: #333; /* Cambiar el color del texto para que coincida con el estilo general */
+  }
+  
+  .form-checkout label input {
+    padding: 10px; /* Aumentar el padding para mayor comodidad */
+    border: 1px solid #ddd; /* Añadir borde */
+    border-radius: 5px; /* Añadir borde redondeado */
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+  }
+  
+  .form-checkout-button-container {
+    display: flex;
+    justify-content: center; /* Centrar el botón */
+    margin-top: 20px;
+  }
+  
+  .form-checkout-button {
+    width: 100%; /* Hacer que el botón ocupe todo el ancho */
+    max-width: 400px; /* Ajustar el ancho máximo del botón */
+    background-color: #007bff; /* Cambiar el color de fondo del botón */
+    color: #fff; /* Cambiar el color del texto del botón */
+    padding: 10px; /* Aumentar el padding para mayor comodidad */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+    border: none; /* Eliminar el borde */
+    border-radius: 5px; /* Añadir borde redondeado */
+    cursor: pointer; /* Cambiar el cursor a pointer */
+    transition: background-color 0.3s; /* Añadir transición para el efecto hover */
+  }
+  
+  .form-checkout-button:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo del botón al pasar el mouse */
+  }

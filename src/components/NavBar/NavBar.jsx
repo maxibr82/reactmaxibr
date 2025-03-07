@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 import './NavBar.css';
+import { CarContext } from "../context/CarContext";
 
-const NavBar = ({ cartCount }) => {
+const NavBar = () => {
+  const { cartCount } = useContext(CarContext);
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">

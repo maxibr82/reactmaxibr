@@ -1,0 +1,27 @@
+.form-checkout-container {
+    width: 60%;
+    background-color: #f9f9f9; /* Cambiar el color de fondo para que coincida con el estilo general */
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Añadir sombra para un efecto de elevación */
+  }
+  
+  .form-checkout-container h1 {
+    text-align: center;
+    color: #333; /* Cambiar el color del texto para que coincida con el estilo general */
+    margin: 0;
+    font-size: 2rem; /* Ajustar el tamaño de la fuente */
+  }
+  
+  .compra-completada p,
+  .pantalla-carga p {
+    width: 90%;
+    color: #333; /* Cambiar el color del texto para que coincida con el estilo general */
+    text-align: center;
+    font-size: 1.5rem; /* Ajustar el tamaño de la fuente */
+    margin: 50px auto;
+    padding: 10px;
+    border: 3px solid #333; /* Cambiar el color del borde para que coincida con el estilo general */
+    border-radius: 10px;
+  }

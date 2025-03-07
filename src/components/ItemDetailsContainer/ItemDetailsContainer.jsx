@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { getProductsById } from "../../asyncProducts";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { db } from "../../firebase/FirebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
+import { useParams, useNavigate } from "react-router-dom";
 import './ItemDetailsContainer.css';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { CarContext } from "../context/CarContext";
 
-const ItemDetailsContainer = ({ onAddToCart, onRemoveFromCart }) => {
+const ItemDetailsContainer = () => {
   const { itemId } = useParams();
+  const navigate = useNavigate();
+  const { addToCart, removeFromCart } = useContext(CarContext);
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
-    getProductsById(itemId)
-      .then((resp) => setProduct(resp))
-      .catch((err) => console.error(err));
+    const fetchProduct = async () => {
+      const docRef = doc(db, "items", itemId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setProduct({ id: docSnap.id, ...docSnap.data() });
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    fetchProduct();
   }, [itemId]);
 
   const handleIncrement = () => {
@@ -28,16 +40,20 @@ const ItemDetailsContainer = ({ onAddToCart, onRemoveFromCart }) => {
 
   const handleAddToCart = () => {
     if (product) {
-      onAddToCart({ ...product, quantity: count });
+      addToCart({ ...product, quantity: count });
       toast.success(`Producto ${product.name} agregado al carrito`);
     }
   };
 
   const handleRemoveFromCart = () => {
     if (product) {
-      onRemoveFromCart(product);
+      removeFromCart(product);
       toast.error(`Producto ${product.name} eliminado del carrito`);
     }
+  };
+
+  const handleCheckout = () => {
+    navigate('/cart');
   };
 
   return (
@@ -60,6 +76,9 @@ const ItemDetailsContainer = ({ onAddToCart, onRemoveFromCart }) => {
             </button>
             <button className="btn btn-danger mt-3" onClick={handleRemoveFromCart}>
               Eliminar del carrito
+            </button>
+            <button className="btn btn-primary mt-3" onClick={handleCheckout}>
+              Terminar compra
             </button>
           </div>
         </div>
