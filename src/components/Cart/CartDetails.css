@@ -41,6 +41,10 @@
   color: #555;
 }
 
+.cart-item-details .subtotal {
+  color: red; /* Cambiar el color del subtotal a rojo */
+}
+
 .cart-total {
   margin-top: 1rem;
   font-size: 1.5rem;
